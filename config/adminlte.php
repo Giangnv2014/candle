@@ -133,6 +133,11 @@ return [
             'icon' => 'lock',
         ],
         [
+            'text' => 'Approve users',
+            'url'  => '/users',
+            'icon' => 'user-plus',
+        ],
+        [
             'text'    => 'Multilevel',
             'icon'    => 'share',
             'submenu' => [
