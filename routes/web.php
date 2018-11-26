@@ -17,8 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/approval', 'HomeController@approval')->name('approval');
 
-Auth::routes();
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['approved'])->group(function () {
+        Route::get('/home', 'HomeController@index')->name('home');
+    });
 
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/users', 'UserController@index')->name('admin.users.index');
+        Route::get('/users/{user_id}/approve', 'UserController@approve')->name('admin.users.approve');
+    });
+});
