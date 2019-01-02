@@ -121,6 +121,17 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
+        'PRODUCTS',
+        [
+            'text'       => 'List product',
+            'url'        => 'admin/products',
+            'icon_color' => 'red',
+        ],
+        [
+            'text'       => 'Create new product',
+            'url'        => 'admin/products/create',
+            'icon_color' => 'yellow',
+        ],
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',

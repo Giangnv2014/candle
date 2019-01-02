@@ -25,7 +25,13 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::middleware(['admin'])->group(function () {
-        Route::get('/users', 'UserController@index')->name('admin.users.index');
-        Route::get('/users/{user_id}/approve', 'UserController@approve')->name('admin.users.approve');
+        Route::name('admin.')->group(function () {
+            Route::get('/users', 'UserController@index')->name('users.index');
+            Route::get('/users/{user_id}/approve', 'UserController@approve')->name('users.approve');
+
+            Route::prefix('admin')->group(function () {
+                Route::resource('products', 'ProductController');
+            });
+        });
     });
 });
